@@ -1,28 +1,47 @@
 package com.ocion.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.ocion.models.Usuario;
+import com.ocion.utils.ConexionBD;
 
 public class RepositorioUsuarios {
 
-    //simulacion de la base de datos. en memoria
-    private static List<Usuario> usuarios = new ArrayList<>();
+    public static Usuario validar(String email, String password) {
+        String sql = "SELECT * FROM usuario WHERE email = ? AND password = ?";
 
-    //contenido de prueba
-    static{
-        usuarios.add(new Usuario(1,"admin@admin.es", "1234", "interno"));
-        usuarios.add(new Usuario(2,"consumidor@consumidor.es", "1234", "consumidor"));
-        usuarios.add(new Usuario(3,"empresa@empresa.es", "1234", "empresa"));
-    }
+        System.out.println(">>> DAO validar()");
+        System.out.println(">>> Email DAO: [" + email + "]");
+        System.out.println(">>> Password DAO: [" + password + "]");
 
-    //varlidar credenciales
-    public static Usuario validar (String email, String password){
-        for(Usuario u : usuarios){
-            if(u.getEmail().equals(email) && u.getPassword().equals(password)){
-                return u;
+        try (Connection conn = ConexionBD.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email.trim());
+            stmt.setString(2, password.trim());
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(">>> Usuario encontrado en BD: " + rs.getString("email"));
+                return new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("rol")
+                );
+            } else {
+                System.out.println(">>> No se encontró usuario en BD");
             }
+
+        } catch (SQLException e) {
+            System.out.println(">>> ERROR SQL EN DAO: " + e.getClass().getName());
+            System.out.println(">>> MENSAJE: " + e.getMessage());
         }
-        return null; //usuario no encontrado
+
+        return null;
     }
 }

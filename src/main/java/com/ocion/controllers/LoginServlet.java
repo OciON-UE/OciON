@@ -1,36 +1,48 @@
 package com.ocion.controllers;
 
-import com.ocion.models.Usuario;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import java.io.IOException;
-import jakarta.servlet.annotation.WebServlet;
 import com.ocion.dao.RepositorioUsuarios;
+import com.ocion.models.Usuario;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 
+import java.io.IOException;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtenemos los parámetros del formulario
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //validar temporalmente hasta tener bbdd
+        if (email != null) email = email.trim();
+        if (password != null) password = password.trim();
+
+        
+        System.out.println(">>> LoginServlet recibido POST");
+
         Usuario usuario = RepositorioUsuarios.validar(email, password);
 
+        System.out.println(">>> Usuario encontrado: " + usuario);
+
         if (usuario != null) {
-            // Iniciar la sesión
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
 
-            // Redirigir a la pantalla principal
-            if(usuario.getTipo().equals("interno")){
+            if (usuario.getRol().equalsIgnoreCase("interno")) {
                 response.sendRedirect("panelGestion.jsp");
-            }else{
-                response.sendRedirect("ofertas.jsp");
+            } else if (usuario.getRol().equalsIgnoreCase("empresa")) {
+                response.sendRedirect("panelEmpresa.jsp");
+            } else if (usuario.getRol().equalsIgnoreCase("consumidor")) {
+                response.sendRedirect("panelConsumidor.jsp");
+            } else {
+                response.sendRedirect("login.jsp?error=rol");
             }
-        }else{
+        } else {
             response.sendRedirect("login.jsp?error=1");
-        }  
+        }
     }
 }

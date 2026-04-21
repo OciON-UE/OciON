@@ -8,14 +8,14 @@ public class Usuario {
     private int id;
     private String email;
     private String password;
-    private String tipo; // Interno, Consumidor, Empresa
+    private String rol; // Interno, Consumidor, Empresa
     
 
-    public Usuario(int id, String email, String password, String tipo) {
+    public Usuario(int id, String email, String password, String rol) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.tipo = tipo;
+        this.rol = rol;
     }
 
     public int getId() {
@@ -42,12 +42,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getTipo (){
-        return tipo;
+    public String getRol (){
+        return rol;
     }
 
-    public void setTipo (String tipo){
-        this.tipo = tipo;
+    public void setRol (String rol){
+        this.rol = rol;
     }
 
     @Override

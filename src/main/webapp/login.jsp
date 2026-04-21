@@ -87,7 +87,8 @@
     <%
         if (request.getParameter("error") != null){ %>
             <div class="error">
-                <strong>Acceso denegado</strong><br>
+                <strong>Acceso denegado 2
+                </strong><br>
                 <span>Comprueba el email o la contraseña</span>  
             </div>       
     <% 
