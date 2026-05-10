@@ -32,8 +32,8 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", usuario);
 
-            if (usuario.getRol().equalsIgnoreCase("interno")) {
-                response.sendRedirect("panelGestion.jsp");
+            if (usuario.getRol().equalsIgnoreCase("administrador")) {
+                response.sendRedirect("panelAdministrador.jsp");
             } else if (usuario.getRol().equalsIgnoreCase("empresa")) {
                 response.sendRedirect("panelEmpresa.jsp");
             } else if (usuario.getRol().equalsIgnoreCase("consumidor")) {

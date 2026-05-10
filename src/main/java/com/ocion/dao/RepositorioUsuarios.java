@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.ocion.models.Usuario;
 import com.ocion.utils.ConexionBD;
+import com.ocion.utils.PasswordHash;
 
 public class RepositorioUsuarios {
 
@@ -21,14 +22,15 @@ public class RepositorioUsuarios {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, email.trim());
-            stmt.setString(2, password.trim());
-
+            //stmt.setString(2, password.trim());
+            stmt.setString(2, PasswordHash.hashPassword(password.trim()));
+            
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 System.out.println(">>> Usuario encontrado en BD: " + rs.getString("email"));
                 return new Usuario(
-                        rs.getInt("id"),
+                        rs.getInt("usuario_id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("rol")

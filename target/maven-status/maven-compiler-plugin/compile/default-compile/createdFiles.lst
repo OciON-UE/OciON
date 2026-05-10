@@ -4,14 +4,15 @@ com\ocion\models\Cupon.class
 com\ocion\models\Suscripcion.class
 com\ocion\utils\validadorFechas.class
 com\ocion\services\CuponService.class
+com\ocion\utils\ConexionBD.class
 com\ocion\controllers\LoginServlet.class
 com\ocion\dao\RepositorioUsuarios.class
 com\ocion\Main.class
 com\ocion\services\OfertaService.class
-com\ocion\utils\passwordHash.class
 com\ocion\controllers\CrearOfertaServlet.class
 com\ocion\models\Categoria.class
 com\ocion\utils\generadorCupones.class
+com\ocion\utils\PasswordHash.class
 com\ocion\services\UsuarioService.class
 com\ocion\controllers\CanjearCuponServlet.class
 com\ocion\models\Empresa.class
