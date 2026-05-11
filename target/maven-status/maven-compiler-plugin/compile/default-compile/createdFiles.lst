@@ -1,6 +1,8 @@
 com\ocion\models\Consumidor.class
 com\ocion\controllers\ListarOfertasServlet.class
 com\ocion\models\Cupon.class
+com\ocion\controllers\EditarOfertaServlet.class
+com\ocion\controllers\EliminarOfertaServlet.class
 com\ocion\models\Suscripcion.class
 com\ocion\utils\validadorFechas.class
 com\ocion\services\CuponService.class

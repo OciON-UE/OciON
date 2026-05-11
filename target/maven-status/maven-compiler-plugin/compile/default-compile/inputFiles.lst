@@ -1,9 +1,11 @@
 C:\OciON\src\main\java\com\ocion\utils\PasswordHash.java
+C:\OciON\src\main\java\com\ocion\controllers\EditarOfertaServlet.java
 C:\OciON\src\main\java\com\ocion\controllers\ListarOfertasServlet.java
 C:\OciON\src\main\java\com\ocion\services\UsuarioService.java
 C:\OciON\src\main\java\com\ocion\models\Usuario.java
 C:\OciON\src\main\java\com\ocion\models\Oferta.java
 C:\OciON\src\main\java\com\ocion\utils\generadorCupones.java
+C:\OciON\src\main\java\com\ocion\controllers\EliminarOfertaServlet.java
 C:\OciON\src\main\java\com\ocion\models\Categoria.java
 C:\OciON\src\main\java\com\ocion\models\Cupon.java
 C:\OciON\src\main\java\com\ocion\controllers\CrearOfertaServlet.java

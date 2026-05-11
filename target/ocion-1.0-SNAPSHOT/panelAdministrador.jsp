@@ -82,29 +82,43 @@
     <div class="topbar">
         <div class="logo">OciON</div>
         <div class="menu">
-            <a href="crearOferta.jsp">Crear oferta</a>
-            <a href="misOfertas.jsp">Administrar ofertas</a>
+            <a href="#">Estadísticas</a>
+            <a href="#">Base de datos</a>
             <a href="LogoutServlet">Cerrar sesión</a>
         </div>
     </div>
-      <!-- PANEL Empresa -->
+      <!-- PANEL DE ADMINISTRACIÓN -->
         <div class="container">
 
-      <a href="crearOferta.jsp" class="card">
-         <h3>Crear oferta</h3>
-          <p>Añadir una nueva oferta</p>
+      <a href="listarUsuarios.jsp" class="card">
+         <h3>Usuarios</h3>
+          <p>Administrar usuarios</p>
           </a>
       
-      <a href="misOfertas.jsp" class="card">
-         <h3>Mis ofertas</h3>
-          <p>Ver, modificar o eliminar ofertas</p>
+      <a href="listarEmpresas.jsp" class="card">
+         <h3>Empresas</h3>
+          <p>Administrar empresas</p>
           </a>
       
-      <a href="LogoutServlet" class="card">
-         <h3>Cerrar sesión</h3>
-          <p>Salir del panel de empresa</p>
+      <a href="listarConsumidores.jsp" class="card">
+         <h3>Consumidores</h3>
+          <p>Administrar consumidores</p>
           </a>
 
+      <a href="listarOfertas.jsp" class="card">
+         <h3>Ofertas</h3>
+          <p>Administrar ofertas</p>
+          </a>
+
+       <a href="listarCategorias.jsp" class="card">
+         <h3>Categorías</h3>
+          <p>Administrar categorías</p>
+          </a>
+
+       <a href="listarCupones.jsp" class="card">
+         <h3>Cupones</h3>
+          <p>Administrar cupones</p>
+          </a>
     </div>
 </body>
 </html>
