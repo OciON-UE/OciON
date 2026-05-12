@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.*;
 import java.io.*;*/
 
-public class Cupon {
+public abstract class Cupon {
     private String id;
     private boolean canjeado;
     private LocalDate fechaCreacion;
@@ -61,5 +61,7 @@ public class Cupon {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public abstract double calcularDescuento(double precio);
 
 }
