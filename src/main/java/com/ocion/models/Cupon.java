@@ -1,72 +1,65 @@
 package com.ocion.models;
 
-//import java.time.LocalDate;
+import java.time.LocalDate;
 
 /*import java.lang.*;
 import java.time.*;
 import java.io.*;*/
 
 public class Cupon {
-    private int id;
-    private Double descuento;
-    private Double cantidadFija;
-    private String generado;
-    private String canjeado;
-    private String caducado;
+    private String id;
+    private boolean canjeado;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaExpiracion;
+    private String tipo;
     
     
-    public Cupon(int id, double descuento, double cantidadFija) {
+    public Cupon(String id, boolean canjeado, LocalDate fechaCreacion, LocalDate fechaExpiracion, String tipo) {
         this.id = id;
-        this.descuento = descuento;
-        this.cantidadFija = cantidadFija;
+        this.canjeado = canjeado;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaExpiracion = fechaExpiracion;
+        this.tipo = tipo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Double getDescuento() {
-        return descuento;
+    public boolean isCanjeado() {
+        return canjeado;
     }
 
-    public void setDescuento(Double descuento) {
-        this.descuento = descuento;
+    public void setCanjeado(boolean canjeado) {
+        this.canjeado = canjeado;
     }
 
-    public double getCantidadFija() {
-        return cantidadFija;
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setCantidadFija(double cantidadFija) {
-        this.cantidadFija = cantidadFija;
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    @Override
-    public String toString() {
-        return "Cupon [id=" + id + ",descuento=" + descuento + ",cantidadFija=" + cantidadFija +"]";
+    public LocalDate getFechaExpiracion() {
+        return fechaExpiracion;
     }
 
-    public double aplicarDescuento(double precio){
-        double precioFinal = precio;
-
-        if (this.descuento != null){
-            precioFinal = precioFinal - (precio*(this.descuento/100));
-        } 
-
-        if(this.cantidadFija != null){
-            precioFinal = precioFinal - this.cantidadFija;
-        }
-
-        return Math.max(precioFinal,0);
-
-
-
+    public void setFechaExpiracion(LocalDate fechaExpiracion) {
+        this.fechaExpiracion = fechaExpiracion;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
 }
