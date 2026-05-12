@@ -141,13 +141,9 @@ public class Oferta {
     }
     
 
-    public double getPrecioFinal(){
-
-        if (this.cupon != null){
-            return cupon.aplicarDescuento(this.precio);
-        }
-
-        return this.precio;
+     public double getPrecioFinal(){
+        double precioFinal = this.cupon.calcularDescuento(this.precio);
+        return precioFinal;
     }
     
     
