@@ -49,12 +49,19 @@
             gap: 15px;
         }
         .acciones a {
+            display: inline-block;
+            margin-top: 15px;
             text-decoration: none;
             font-weight: bold;
             color: white;
-            background: #111;
-            padding: 10px 15px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .acciones a:hover {
+            transform: translateY(-2px);
         }
         .mensaje {
             background: #d4edda;
@@ -63,6 +70,11 @@
             border-radius: 10px;
             margin-bottom: 20px;
             font-weight: bold;
+        }
+        .precio-final {
+            font-size: 22px;
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
@@ -92,16 +104,42 @@
         <%
             try {
                 Connection conn = ConexionBD.getConnection();
-                String sql = "SELECT * FROM oferta";
+                String sql = 
+                "SELECT o.*, c.tipo, p.porcentaje, cf.cantidad " +
+                "FROM oferta o " +
+                "LEFT JOIN cupon c ON o.id_oferta = c.id_oferta " +
+                "LEFT JOIN porcentaje p ON c.id_cupon = p.id_cupon " +
+                "LEFT JOIN cantidad_fija cf ON c.id_cupon = cf.id_cupon";;
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();
                 
                 while (rs.next()) {
+
+                    double precio = rs.getDouble("precio");
+                    String tipo = rs.getString("tipo");
+
+                    double precioFinal = precio;
+                    String descuentoTexto = "Sin descuento";
+
+                    if ("DESCUENTO".equalsIgnoreCase(tipo)) {
+                        double porcentaje = rs.getDouble("porcentaje");
+                        precioFinal = precio * (1 - porcentaje / 100);
+                        descuentoTexto = ((int) porcentaje) + "% de descuento";
+                    } else if ("CANTIDAD_FIJA".equalsIgnoreCase(tipo)) {
+                        double cantidad = rs.getDouble("cantidad");
+                        precioFinal = Math.max(0, precio - cantidad);
+                        descuentoTexto = "€" + String.format("%.2f", cantidad) + " de descuento";
+                    }
+
         %>
             <div class="card">
                 <h2><%= rs.getString("nombre") %></h2>
                 <p><%= rs.getString("descripcion") %></p>
-                <p>Precio: $<%= rs.getDouble("precio") %></p>
+                <p>Precio original: €<%= String.format("%.2f", precio) %></p>
+                <p>Tipo de cupón: <%= tipo %></p>
+                <p>Descuento: <%= descuentoTexto %></p>
+                <p class="precio-final">Precio final: €<%= String.format("%.2f", precioFinal) %></p>
+
                 <p>Duración activa: <%= rs.getInt("duracion_activa") %> días</p>
                 <p>Cupo disponible: <%= rs.getInt("cupo_ofertas") %></p>
 

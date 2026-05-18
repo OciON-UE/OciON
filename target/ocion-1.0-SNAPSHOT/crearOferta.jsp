@@ -81,17 +81,23 @@
         }
         button {
             width: 100%;
-            padding: 15px;
-            background: #111;
+            padding: 14px;
+            background-color: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         button:hover {
-            background: #333;
+            transform: translateY(-2px);
+        }
+        button[type="submit"] {
+            background-color: #1d4ed8;
         }
          .volver {
             display: block;
@@ -132,6 +138,21 @@
                 <div>
                     <label>Precio</label>
                     <input type="number" name="precio" placeholder="Ej: 19.99" step="0.01" min="0" required>
+                </div>
+            </div>
+
+                        <div class="row">
+                <div>
+                    <label>Tipo de cupón</label>
+                    <select name="tipo_cupon" required>
+                        <option value="">Selecciona un tipo de cupón</option>
+                        <option value="DESCUENTO">Descuento</option>
+                        <option value="CANTIDAD_FIJA">Cantidad Fija</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Valor del cupón</label>
+                    <input type="number" name="valor_descuento" placeholder="Ej: 19.99" step="0.01" min="0" required>
                 </div>
             </div>
 

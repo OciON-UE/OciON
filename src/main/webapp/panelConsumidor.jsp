@@ -5,8 +5,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de gestión</title>
-    <!-- CSS para la panel de gestión-->
+    <title>Panel Consumidor</title>
+
     <style>
         /*Estilos generales */
         body {
@@ -59,6 +59,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            text-decoration: none;
+            color: #000;
+            width: 100%;
+            box-sizing: border-box;
         }
         .card:hover {
             transform: scale(1.05);
@@ -74,45 +78,33 @@
 
 </head>
 <body>
+    <!-- BARRA SUPERIOR -->
     <div class="topbar">
         <div class="logo">OciON</div>
         <div class="menu">
-            <a href="#">Estadísticas</a>
-            <a href="#">Contacto</a>
-            <a href="#">Cerrar sesión</a>
+            <a href="ofertasConsumidor.jsp">Crear oferta</a>
+            <a href="misCupones.jsp">Administrar cupones</a>
+            <a href="LogoutServlet">Cerrar sesión</a>
         </div>
     </div>
-      <!--Tabla 3x3-->
-      <div class="container">
-        <div class="card">
-         <h3>Crear evento</h3>
-          <p>Evento personalizado</p>
-        </div>
+      <!-- PANEL Empresa -->
+        <div class="container">
+
+      <a href="ofertasConsumidor.jsp" class="card">
+         <h3>Ver ofertas</h3>
+          <p>Explora las ofertas disponibles</p>
+          </a>
       
-        <div class="card">
-          <h3>Oferta de verano</h3>
-          <p>Promociones</p>
-        </div>
+      <a href="misCupones.jsp" class="card">
+         <h3>Mis cupones</h3>
+          <p>Consultar y gestionar mis cupones</p>
+          </a>
       
-        <div class="card">
-         <h3>Vuelta al cole</h3>
-         <p>Ofertas</p>
-        </div>
+      <a href="LogoutServlet" class="card">
+         <h3>Cerrar sesión</h3>
+          <p>Salir del panel de empresa</p>
+          </a>
 
-        <div class="card">
-          <h3>Evento comida rápida</h3>
-          <p>Desde 400€ / 5 días</p>
-        </div>
-
-        <div class="card">
-         <h3>Evento cine</h3>
-         <p>Desde 400€ / 5 días</p>
-        </div>
-
-        <div class="card">
-          <h3>Evento concierto</h3>
-          <p>Desde 400€ / 5 días</p>
-        </div>
     </div>
 </body>
 </html>

@@ -7,10 +7,9 @@ import java.sql.SQLException;
 public class ConexionBD {
 
     private static final String URL =
-            "jdbc:mysql://127.0.0.1:3306/ocion_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+            "jdbc:mysql://127.0.0.1:3307/ocion_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "";
-
     public static Connection getConnection() throws SQLException {
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());

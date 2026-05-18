@@ -64,4 +64,8 @@ public abstract class Cupon {
 
     public abstract double calcularDescuento(double precio);
 
+    public double aplicarDescuento(double precioOriginal) {
+            return precioOriginal; // Sin descuento si ya fue canjeado o expiró
+    }
+
 }

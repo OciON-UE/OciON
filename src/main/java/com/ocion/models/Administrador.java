@@ -91,7 +91,7 @@ public class Administrador extends Usuario{
         
         for ( int i = 0 ; i < empresa.getOfertasActivas().length; i++) {
             Oferta [] antiguasOfertasActivas = empresa.getOfertasActivas();
-            if (!(antiguasOfertasActivas[i].getId().equals(numeroOferta))) {
+            if (antiguasOfertasActivas[i].getId() != numeroOferta){
                     nuevoOfertasActivas[j] = antiguasOfertasActivas[i];
                     j++;
                 } else {

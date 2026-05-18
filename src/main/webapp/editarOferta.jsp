@@ -63,8 +63,10 @@
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            margin-top: 8px;
+            margin-top: 5px;
             box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
 
         textarea {
@@ -116,7 +118,12 @@
     int id = Integer.parseInt(request.getParameter("id"));
 
     Connection conn = ConexionBD.getConnection();
-    String sql = "SELECT * FROM oferta WHERE id_oferta = ?";
+    String sql = "SELECT o.*, c.tipo AS tipo, p.porcentaje AS porcentaje, cf.cantidad AS cantidad " +
+                 "FROM oferta o " +
+                 "LEFT JOIN cupon c ON o.id_oferta = c.id_oferta " +
+                 "LEFT JOIN porcentaje p ON c.id_cupon = p.id_cupon " +
+                 "LEFT JOIN cantidad_fija cf ON c.id_cupon = cf.id_cupon " +
+                 "WHERE o.id_oferta = ?";
     PreparedStatement stmt = conn.prepareStatement(sql);
     stmt.setInt(1, id);
     ResultSet rs = stmt.executeQuery();
@@ -149,8 +156,20 @@
             <option value="6" <%= rs.getInt("id_categoria") == 6 ? "selected" : "" %>>Conciertos</option>
             <option value="7" <%= rs.getInt("id_categoria") == 7 ? "selected" : "" %>>Viajes</option>
             <option value="8" <%= rs.getInt("id_categoria") == 8 ? "selected" : "" %>>Deportes</option>
-        </select><br>   
+        </select>
+        
+        <label>Tipo de cupón:</label>
+        <select name="tipoCupon" reqUired>
+            <option value="">Sin cupón</option>
+            <option value="DESCUENTO" <%= "DESCUENTO".equals(rs.getString("tipo")) ? "selected" : "" %>>Descuento porcentaje</option>
+            <option value="CANTIDAD_FIJA" <%= "CANTIDAD_FIJA".equals(rs.getString("tipo")) ? "selected" : "" %>>Descuento cantidad fija</option>
+        </select>
 
+        <label>Valor del cupón:</label>
+        <input type="number" 
+                step="0.01"
+                name="valor_descuento"
+                value="<%= "DESCUENTO".equals(rs.getString("tipo")) ? rs.getDouble("porcentaje") : rs.getDouble("cantidad") %>" required><br>
         <button type="submit">Guardar cambios</button>
     </form>
     

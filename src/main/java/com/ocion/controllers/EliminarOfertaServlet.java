@@ -17,6 +17,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/EliminarOfertaServlet")
 public class EliminarOfertaServlet extends HttpServlet {
 
+    // Controlador para eliminar ofertas existentes y los cupones asociados
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

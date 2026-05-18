@@ -10,23 +10,30 @@
     <style>
         /*Estilos generales */
         body {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #eef2ff, #f5f7ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         /*Contenedor del formulario*/
         .login-container{
             width: 300px;
-            margin: 100px auto;
-            padding: 25px;
+            padding: 40px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 38px;
+            color: #111;
         }
 
         label{
@@ -43,26 +50,43 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
-
+            font-size: 16px;
+            transition: 0.3s;
         }
         
         input[type="submit"] {
             width: 100%;
-            margin-top: 18px;
-            padding: 12px;
+            margin-top: 20px;
+            padding: 14px;
             border: none;
-            border-radius: 6px;
-            background: #2d6cdf;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;   
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         input[type="submit"]:hover{
-            background: #1f56b8;
+            transform: translateY(-2px);
+        }
+
+        input:focus{
+            outline: none;
+            border-color: #2575fc
+
         }
 
         .error {
-            color: red;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #f8d7da;
+            color: #842029;
             text-align: center;
-            margin-top: 12px;
+            font-weight: bold;
         }
 
     </style>

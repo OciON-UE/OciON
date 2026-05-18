@@ -82,8 +82,8 @@
     <div class="topbar">
         <div class="logo">OciON</div>
         <div class="menu">
-            <a href="#">Estadísticas</a>
-            <a href="#">Base de datos</a>
+            <a href="estadisticas.jsp">Estadísticas</a>
+             <a href="listarUsuarios.jsp">Usuarios</a>
             <a href="LogoutServlet">Cerrar sesión</a>
         </div>
     </div>
