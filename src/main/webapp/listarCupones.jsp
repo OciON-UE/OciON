@@ -59,38 +59,41 @@
     <table>
         <tr>
             <th>ID cupón</th>
-            <th>codigo</th>
-            <th>generado</th>
-            <th>canjeaado</th>
-            <th>caducado</th>
-            <th>id oferta</th>
-            <th>id consumidor</th>
+            <th>Código</th>
+            <th>Tipo</th>
+            <th>Canjeado</th>
+            <th>ID oferta</th>
+            <th>ID consumidor</th>
+            <th>Fecha creación</th>
+            <th>Fecha expiración</th>
         </tr>
         <%
             try {
                 Connection conn = ConexionBD.getConnection();
-                String sql = "SELECT * FROM cupon";
+                String sql = "SELECT id_cupon, codigo, canjeado, id_oferta, usuario_id_consumidor, fechaCreacion, fechaExpiracion, tipo FROM cupon";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();
                 
                 while (rs.next()) {
                     int id = rs.getInt("id_cupon") ;
                     String codigo = rs.getString("codigo");
-                    String generado = rs.getString("generado");
+                    String tipo = rs.getString("tipo");
+                    String fechaCreacion = rs.getString("fechaCreacion");
+                    String fechaExpiracion = rs.getString("fechaExpiracion");
                     int canjeado = rs.getInt("canjeado");
-                    int caducado = rs.getInt("caducado");
                     int id_oferta = rs.getInt("id_oferta");
                     int id_consumidor = rs.getInt("usuario_id_consumidor");
 
         %>
         <tr>
             <td><%= id %></td>
-            <td><%= codigo %></td>
-            <td><%= generado %></td>                                                                                                                                                  
+            <td><%= codigo %></td> 
+            <td><%= tipo %></td>                                                                                                                                                
             <td><%= canjeado %></td>
-            <td><%= caducado %></td>
             <td><%= id_oferta %></td>
             <td><%= id_consumidor %></td>
+            <td><%= fechaCreacion %></td>
+            <td><%= fechaExpiracion %></td>    
 
         </tr>
         <%      }
@@ -101,7 +104,7 @@
                 e.printStackTrace();
         %>
 
-        <tr><td colspan="4">Error al cargar usuarios</td></tr>
+        <tr><td colspan="4">Error al cargar cupones</td></tr>
         <%  } %>
     </table>
 

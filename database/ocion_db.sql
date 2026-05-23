@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 18-05-2026 a las 11:53:33
+-- Tiempo de generación: 23-05-2026 a las 18:58:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -101,9 +101,9 @@ CREATE TABLE `consumidor` (
 --
 
 INSERT INTO `consumidor` (`usuario_id`, `nombre`, `fecha_alta`, `telefono`, `calle`, `ciudad`, `provincia`, `id_suscripcion`) VALUES
-(50, 'Mario García', '2026-05-10', '611111111', 'Calle Sol 10', 'Madrid', 'Madrid', NULL),
-(51, 'Laura Pérez', '2026-05-10', '622222222', 'Avenida Centro 22', 'Barcelona', 'Barcelona', NULL),
-(52, 'Carlos López', '2026-05-10', '633333333', 'Calle Mayor 5', 'Valencia', 'Valencia', NULL);
+(50, 'Mario García', '2026-05-10', '611111111', 'Calle Sol 10', 'Madrid', 'Madrid', 1),
+(51, 'Laura Pérez', '2026-05-10', '622222222', 'Avenida Centro 22', 'Barcelona', 'Barcelona', 2),
+(52, 'Carlos López', '2026-05-10', '633333333', 'Calle Mayor 5', 'Valencia', 'Valencia', 1);
 
 -- --------------------------------------------------------
 
@@ -127,10 +127,10 @@ CREATE TABLE `cupon` (
 --
 
 INSERT INTO `cupon` (`id_cupon`, `codigo`, `canjeado`, `id_oferta`, `usuario_id_consumidor`, `fechaCreacion`, `fechaExpiracion`, `tipo`) VALUES
-(6, 'CUPON003', 1, 16, 52, NULL, NULL, 'DESCUENTO'),
-(7, 'CUPON004', 1, 17, 50, NULL, NULL, 'CANTIDAD_FIJA'),
-(8, 'CUPON005', 1, 18, 51, NULL, NULL, 'DESCUENTO'),
-(9, 'CUPON1778845718794', 0, 22, NULL, NULL, NULL, NULL);
+(6, 'CUPON003', 1, 16, 52, '2025-05-10 09:15:00', '2025-06-10', 'DESCUENTO'),
+(7, 'CUPON004', 1, 17, 50, '2025-05-15 14:20:00', '2025-07-01', 'CANTIDAD_FIJA'),
+(8, 'CUPON005', 1, 18, 51, '2025-05-20 18:45:00', '2025-08-15', 'DESCUENTO'),
+(9, 'CUPON1778845718794', 0, 22, NULL, '2025-05-23 11:00:00', '2025-09-01', 'DESCUENTO');
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ INSERT INTO `oferta` (`id_oferta`, `nombre`, `descripcion`, `duracion_activa`, `
 (17, 'Gym Premium', 'Suscripcion premium de gimnasio', 60, 29.99, 199, 6, 5, 8),
 (18, 'Viaje a Paris', 'Oferta especial vuelo + hotel', 10, 599.99, 19, 7, 5, 7),
 (19, 'Cena Italiana', 'Menu completo italiano para dos personas', 30, 49.99, 100, 7, 5, 4),
-(22, 'Pizza Familiar', '2x1 en pizzas familiares a domicilio los fines de semana', 30, 19.99, 100, 6, NULL, 4);
+(22, 'Pizza Familiar', '2x1 en pizzas familiares a domicilio los fines de semana', 30, 19.99, 150, 6, NULL, 4);
 
 -- --------------------------------------------------------
 

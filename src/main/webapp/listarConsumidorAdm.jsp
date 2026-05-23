@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Cupones</title>
+    <title>Empresas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,46 +55,44 @@
     </style>
 </head>
 <body>
-    <h1>Lista de Cupones</h1>
+    <h1>Lista de Consumidores</h1>
     <table>
         <tr>
-            <th>ID cupón</th>
-            <th>Código</th>
-            <th>Tipo</th>
-            <th>Canjeado</th>
-            <th>ID oferta</th>
-            <th>ID consumidor</th>
-            <th>Fecha creación</th>
-            <th>Fecha expiración</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha alta</th>
+            <th>Teléfono</th>
+            <th>Calle</th>
+            <th>Ciudad</th>
+            <th>Provincia</th>
+            <th>ID suscripción</th>
         </tr>
         <%
             try {
                 Connection conn = ConexionBD.getConnection();
-                String sql = "SELECT id_cupon, codigo, canjeado, id_oferta, usuario_id_consumidor, fechaCreacion, fechaExpiracion, tipo FROM cupon";
+                String sql = "SELECT * FROM consumidor";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();
                 
                 while (rs.next()) {
-                    int id = rs.getInt("id_cupon") ;
-                    String codigo = rs.getString("codigo");
-                    String tipo = rs.getString("tipo");
-                    String fechaCreacion = rs.getString("fechaCreacion");
-                    String fechaExpiracion = rs.getString("fechaExpiracion");
-                    int canjeado = rs.getInt("canjeado");
-                    int id_oferta = rs.getInt("id_oferta");
-                    int id_consumidor = rs.getInt("usuario_id_consumidor");
-
+                    int id = rs.getInt("usuario_id") ;
+                    String nombre = rs.getString("nombre");
+                    String fecha_alta = rs.getString("fecha_alta");
+                    String telefono = rs.getString("telefono");
+                    String calle = rs.getString("calle");
+                    String ciudad = rs.getString("ciudad");
+                    String provincia = rs.getString("provincia");
+                    int idSuscripcion = rs.getInt("id_suscripcion");
         %>
         <tr>
             <td><%= id %></td>
-            <td><%= codigo %></td> 
-            <td><%= tipo %></td>                                                                                                                                                
-            <td><%= canjeado %></td>
-            <td><%= id_oferta %></td>
-            <td><%= id_consumidor %></td>
-            <td><%= fechaCreacion %></td>
-            <td><%= fechaExpiracion %></td>    
-
+            <td><%= nombre %></td>
+            <td><%= fecha_alta %></td>
+            <td><%= telefono %></td>
+            <td><%= calle %></td>
+            <td><%= ciudad %></td>
+            <td><%= provincia %></td>
+            <td><%= idSuscripcion %></td>
         </tr>
         <%      }
                 rs.close();
@@ -104,7 +102,7 @@
                 e.printStackTrace();
         %>
 
-        <tr><td colspan="4">Error al cargar cupones</td></tr>
+        <tr><td colspan="4">Error al cargar usuarios</td></tr>
         <%  } %>
     </table>
 

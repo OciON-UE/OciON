@@ -100,7 +100,7 @@
           <p>Administrar empresas</p>
           </a>
       
-      <a href="listarConsumidores.jsp" class="card">
+      <a href="listarConsumidorAdm.jsp" class="card">
          <h3>Consumidores</h3>
           <p>Administrar consumidores</p>
           </a>
