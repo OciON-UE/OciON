@@ -3,7 +3,7 @@ package com.ocion.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordHash {
+public class passwordHash {
 
     public static String hashPassword(String password) {
         try {
